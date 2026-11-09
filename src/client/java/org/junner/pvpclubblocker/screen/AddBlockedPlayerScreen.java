@@ -54,7 +54,7 @@ public final class AddBlockedPlayerScreen extends GuiBase {
 			return;
 		}
 
-		Optional<GameProfile> online = manager.findOnlineProfile(mc, name);
+		Optional<GameProfile> online = manager.findTabProfile(mc, name);
 		if (online.isPresent()) {
 			finish(online.get());
 			return;

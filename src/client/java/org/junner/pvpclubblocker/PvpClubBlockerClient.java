@@ -250,7 +250,7 @@ public final class PvpClubBlockerClient implements ClientModInitializer {
 	private int block(FabricClientCommandSource source, String name, BlockReason reason) {
 		Minecraft client = Minecraft.getInstance();
 		boolean commandStartedInGame = isActiveGame();
-		Optional<GameProfile> onlineProfile = manager.findOnlineProfile(client, name);
+		Optional<GameProfile> onlineProfile = manager.findTabProfile(client, name);
 		if (onlineProfile.isPresent()) {
 			return finishBlock(source, client, onlineProfile.get(), reason, commandStartedInGame);
 		}
@@ -310,12 +310,13 @@ public final class PvpClubBlockerClient implements ClientModInitializer {
 			return new ArrayList<>(currentGamePlayers.values());
 		}
 		if (!previousGamePlayers.isEmpty()) return previousGamePlayers;
-		return manager.onlineProfiles(client);
+		return manager.tabProfiles(client);
 	}
 
 	private void collectCurrentGamePlayers(Minecraft client) {
 		if (!isActiveGame()) return;
-		for (GameProfile profile : manager.onlineProfiles(client)) {
+		currentGamePlayers.clear();
+		for (GameProfile profile : manager.tabProfiles(client)) {
 			currentGamePlayers.put(profile.id(), profile);
 		}
 	}
@@ -432,7 +433,7 @@ public final class PvpClubBlockerClient implements ClientModInitializer {
 			ticksUntilCheck--;
 			return;
 		}
-		Optional<BlockedPlayer> blockedPlayer = manager.findBlockedOnline(client);
+		Optional<BlockedPlayer> blockedPlayer = manager.findBlocked(currentGamePlayers.values());
 		if (blockedPlayer.isPresent()) {
 			ticksUntilCheck = -1;
 			BlockedPlayer player = blockedPlayer.get();

@@ -51,7 +51,7 @@ and block-list screens.
 ## Automatic disconnect
 
 Automatic detection is enabled by default. After joining a match, the mod waits
-for the configured delay and checks the match's Tab player list. If it finds a
+for the configured delay and checks the players in that match. If it finds a
 blocked player, it disconnects and shows that player's name and block reason on
 the disconnect screen.
 
