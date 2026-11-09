@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "org.junner.pvpclubblocker.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ClientPacketListenerMixin",
+		"PacketDecoderMixin",
+		"PacketEncoderMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

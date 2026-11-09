@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "pvpclub_blocker",
+	"version": "${version}",
+	"name": "PvPClub Blocker",
+	"description": "player blocker and automatic quit game for mcpvp.club.",
+	"authors": [
+		"Junner"
+	],
+	"license": "MIT",
+	"icon": "assets/pvpclub_blocker/icon.png",
+	"environment": "client",
+	"mixins": [
+		"pvpclub_blocker.mixins.json"
+	],
+	"entrypoints": {
+		"client": [
+			"org.junner.pvpclubblocker.PvpClubBlockerClient"
+		],
+		"modmenu": [
+			"org.junner.pvpclubblocker.ModMenuIntegration"
+		]
+	},
+	"suggests": {
+		"modmenu": ">=17.0.0"
+	},
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*",
+		"malilib": ">=0.27.16"
+	}
+}
